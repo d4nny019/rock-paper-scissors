@@ -1,11 +1,9 @@
-let randomNumber = Math.random()
-let trimmedRandomNumber = randomNumber.toFixed(2)
-let humanScore = 0
-let computerScore = 0
-
-
-
-function playRound(ComputerChoice, HumanChoice) {
+function playGame() {
+    let humanScore = 0
+    let computerScore = 0
+    for (let i = 0; i < 5; i++) {
+        playRound()
+        function playRound() {
     const humanSelection = getHumanChoice();
     const computerSelection = getComputerChoice();
 
@@ -26,7 +24,7 @@ function playRound(ComputerChoice, HumanChoice) {
     }
     
     function getHumanChoice() {
-        let humanChoice = prompt('wut it gonna be? (select from: rock/paper/scissors)')
+        let humanChoice = prompt('Which guesture do you want to play? (rock/paper/scissors)')
         let choice = humanChoice.toLowerCase()
         if (choice == 'rock') {
             console.log('you chose rock')
@@ -41,10 +39,24 @@ function playRound(ComputerChoice, HumanChoice) {
                     console.log('learn to follow instructions')}
     }
 
-    if (humanSelection == computerSelection) {
+    if (humanSelection == 1 && computerSelection == 3 || humanSelection == 2 && computerSelection == 1 || humanSelection == 3 && computerSelection == 2) {
+        humanScore++
+        console.log('you win')
+        console.log('')
+    } else if (computerSelection == 1 && humanSelection == 3 || computerSelection == 2 && humanSelection == 1 || computerSelection == 3 && humanSelection == 2) {
+        computerScore++
+        console.log('you lose')
+        console.log('')
+    } else if (computerSelection == humanSelection) {
         console.log('draw')
+        console.log('')
+    } else {
+        computerScore++
+        console.log('you lose')
+        console.log('')
     }
-    else {
-        console.log('not a draw')
-    }
+    console.log('your score:' + ' ' + humanScore)
+    console.log("computer's score:" + ' ' + computerScore)
+}
+}
 }
